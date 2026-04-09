@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>{% if session.get('language') == 'ur' %}لاگ ان{% else %}Login{% endif %}</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">{% if session.get('language') == 'ur' %}صارف نام{% else %}Username{% endif %}</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">{% if session.get('language') == 'ur' %}خفیہ لفظ{% else %}Password{% endif %}</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <button type="submit" class="btn">{% if session.get('language') == 'ur' %}لاگ ان{% else %}Login{% endif %}</button>
+    </form>
+    
+    <p style="margin-top: 1rem; color: #888;">
+        {% if session.get('language') == 'ur' %}
+            رجسٹریشن نظام بند ہے۔ براہ کرم منتظم سے رابطہ کریں۔
+        {% else %}
+            Registration is closed. Please contact administrator.
+        {% endif %}
+    </p>
+</div>
+{% endblock %}

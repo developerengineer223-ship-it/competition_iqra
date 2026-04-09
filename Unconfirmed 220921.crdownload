@@ -1,0 +1,88 @@
+# import flask
+from flask import Flask, render_template, request 
+
+# initialize the Flask app
+app = Flask(__name__)
+
+# routing
+@app.route("/checker", methods = ["GET", "POST"])
+def admission_eligibility_checker():               #Task 1 on 11-3-26
+    global username, age, marks, status
+    username = ""
+    age = ""
+    marks = ""
+    status = ""
+    if(request.method == "POST"):
+        username = request.form.get("username")
+        age = request.form.get("age")
+        marks = request.form.get("marks")
+        if(int (age) > 20 and int (marks) > 75):
+            status = "You are eligible for admission"
+        else:
+            status = "You are not eligible for admission"   
+    return render_template("admission_checker.html", status = status)
+
+@app.route("/inventory", methods = ["GET", "POST"])
+def checkInventory():                            #Task 2 on 11-3-26
+    global total_price
+    total_price = 0
+    item_prices = {
+        "mobile": 30000,
+        "laptop" : 60000,
+        "earbuds" : 2000
+    }
+    if request.method == "POST":
+        items = request.form.getlist("items")
+        for item in items:
+            total_price = total_price + item_prices[item] 
+    return render_template("inventory.html", total_price = total_price)
+
+@app.route("/register", methods = ["GET", "POST"])
+def register():
+    global username, data
+    username = ""
+    data = ""
+    if(request.method == "POST"):
+        username = request.form.get("username")
+        data = request.form
+    return render_template("register_form.html", username = username, data = data)
+
+@app.route("/")
+def test():
+    page_title = "My main page"
+    countries = ["pakistan", "england", "southafrica"]
+    return render_template("test.html", title = page_title, countries = countries)
+
+@app.route("/about")
+def sample():
+    games = ["hockey", "cricket", "football"]
+    return render_template("about.html", games = games)
+
+@app.route("/spam")
+def spamfilter():
+    message = "anybody asks me to accept free invite for trial basis of any ai scheme application to use for any purpose"
+    global updated_message 
+    updated_message = message
+    spam_words = ["free","trial","scheme"]
+    for word in spam_words:
+        if(word in message):
+            updated_message = message.replace(word,"****")
+    return render_template("spam.html", original_message = message, updated_message = updated_message)
+    
+
+@app.route("/sample1")
+def sample1():
+    return render_template("sample1.html")
+
+
+@app.route("/sample2")
+def sample2():
+    return render_template("sample2.html")
+
+@app.route("/sample3")
+def sample3():
+    return render_template("sample3.html", title = "Flora Care", name = "The florist", quote = "Bringing nature's beauty to your world")
+
+#run the flask application
+if __name__ == '__main__': #function run cuz of this line
+    app.run(debug=True)

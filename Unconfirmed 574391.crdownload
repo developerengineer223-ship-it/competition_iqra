@@ -1,0 +1,35 @@
+# Task - 1 (not fully correct)
+names = ["  ali", "sara", "ahmed    ", "john"]
+scores = [40, 30, 50, 100]
+status = ""
+standard_names = []
+for item in names:
+    name = item.strip().upper()
+    standard_names.append(name)
+print(f"Names are {standard_names}") 
+for index, num in enumerate(scores,1):
+    if(num >= 50):
+        status = "PASS"
+    else:
+        status = "Fail"    
+    print(f"Rank: {index}, Name: {standard_names},Status:{status}")
+# Correct solution of Task - 1
+names = ["faisal  ","  musa","hassan","darain"]
+scores = [60,45,30,78]
+status = ""
+for index, name in enumerate(names):
+    name = name.strip().upper()
+    if(scores[index] > 50):
+        status = "pass"
+    else:
+        status = "fail"
+    print(f"Rank {index+1} |  {name} | Score : {scores[index]} | status: {status}")
+# Task - 2 (Intelligent spam filter)
+message = "anybody asks me to accept free invite for trial basis of any ai scheme application to use for any purpose"
+spam_words = ["free","trial","scheme"]
+for word in spam_words:
+    if(word in message):
+        message = message.replace(word,"****")
+print(f"Total characters of new message: {len(message)} ")
+print(message)
+

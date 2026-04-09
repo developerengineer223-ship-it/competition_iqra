@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quranic Word Classifier</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .quran-text { font-size: 2.5rem; color: #2c3e50; margin-bottom: 10px; }
+        .card { border: none; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .stat-card { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <h2 class="text-center mb-5">🌙 Quranic Word Classifier & Visualizer</h2>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card p-4 mb-4">
+                <h5>Analyze a Word</h5>
+                <div class="input-group mb-3">
+                    <input type="number" id="wordIdInput" class="form-control" placeholder="Enter Word ID (e.g. 1)">
+                    <button class="btn btn-primary" onclick="analyzeWord()">Analyze</button>
+                </div>
+                <hr>
+                <div id="wordDisplay" class="text-center py-3">
+                    <p class="text-muted">Enter an ID to see classification</p>
+                </div>
+            </div>
+
+            <div class="card p-4">
+                <h5>Similar Words (Recommendations)</h5>
+                <ul id="recommendationList" class="list-group list-group-flush">
+                    <li class="list-group-item text-muted">No recommendations yet</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-4 h-100">
+                <h5>Grammar Distribution (Sura Stats)</h5>
+                <canvas id="posChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let myChart;
+
+    // 1. Function to Fetch Word Info and Recommendations
+    async function analyzeWord() {
+        const id = document.getElementById('wordIdInput').value;
+        if (!id) return;
+
+        // Fetch Recommendations from Flask
+        const response = await fetch(`/recommend/${id}`);
+        const data = await response.json();
+
+        const list = document.getElementById('recommendationList');
+        list.innerHTML = ""; // Clear old list
+
+        if (data.message) {
+            list.innerHTML = `<li class="list-group-item text-danger">${data.message}</li>`;
+        } else {
+            data.forEach(word => {
+                list.innerHTML += `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fs-4">${word.text}</span>
+                        <span class="badge bg-info rounded-pill">Sura ${word.surah}:${word.ayah}</span>
+                    </li>`;
+            });
+            // Update the chart (Example: Show stats for Sura 1)
+            updateChart(1); 
+        }
+    }
+
+    // 2. Function to Update Chart.js
+    async function updateChart(suraId) {
+        // Note: You'll need to create a /api/stats/<id> route in app.py first!
+        // For now, using sample data to show it works
+        const sampleData = { "Noun": 60, "Verb": 25, "Particle": 15 };
+        
+        const ctx = document.getElementById('posChart').getContext('2d');
+        
+        if (myChart) myChart.destroy(); // Remove old chart
+
+        myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(sampleData),
+                datasets: [{
+                    data: Object.values(sampleData),
+                    backgroundColor: ['#2ecc71', '#e74c3c', '#3498db']
+                }]
+            },
+            options: { responsive: true }
+        });
+    }
+
+    // Initialize an empty chart on load
+    window.onload = () => updateChart(1);
+</script>
+
+</body>
+</html>

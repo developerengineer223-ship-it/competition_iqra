@@ -1,0 +1,70 @@
+# Functions:
+def replaceSpamWords(sentence):
+    print(f"Sentence received: {sentence}")
+replaceSpamWords("We are studing python")
+
+# Self practise
+# 1) How to pass data to any functions?
+def greet(name):
+    print(f"Hello {name}")
+greet("Areesha")   
+
+def sum(a,b):
+    result = a+b
+    print(f"Sum is: {result}")
+sum(3,4)
+
+# 2) How to return data back from any function??
+def add(a, b):
+    return a + b
+result = add(10, 20)
+print(result) 
+
+def multiply(a,b):
+     return a*b
+show = multiply(10,20)
+print(show)
+
+def greet(name):
+    return "Hello " + name
+message = greet("Areesha")
+print(message)
+
+def calculate(a,b):
+    sum_value = a+b
+    product_value = a*b
+    return sum_value, product_value
+s,p = calculate(3,4)
+print(f"The sum is {s} and product is {p}")
+
+# 3) How to write logic in any function(while defining)
+def check_num(num):
+    if(num > 0):
+        return "positive"
+    elif(num<0):
+        return "negative"
+    else:
+        return "zero"
+print(check_num(5))    
+
+def is_divisible_by_5(num):
+    if (num % 5 == 0):
+        return "True"
+    else:
+        return "False"
+print(is_divisible_by_5(25))   
+
+def sum_numbers(n):
+    total = 0
+    for item in range(1,n+1):
+        total = total + item
+    return total
+print(sum_numbers(4))    
+
+def sum_even_numbers(n):
+    total = 0
+    for i in range(1,n+1):
+        if(i%2==0):
+            total = total + i
+    return total
+print(sum_even_numbers(10))        

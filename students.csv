@@ -1,0 +1,17 @@
+student_id,full_name,gender,age,city,department,semester,gpa,attendance_percent,enrollment_date,email,phone,fee_paid,scholarship,hostel,guardian_income,remarks
+ST-1001,Ali Raza,Male,20,Lahore,CS,3,3.2,85,2024-01-15,ali.raza@example.com,0300-1234567,120000,Yes,No,95000,Good
+ST-1002,Sana Khan,Female,19,Karachi,SE,2,3.8,91,15/02/2024,sana.khan@example.com,0312-7654321,125000,yes,yes,120000,
+ST-1003,Ahmed Noor,Male,21, lahore ,IT,4,2.9,68,2024/03/10,ahmed.noor@example,0301-1112223,118000,No,No,85000,Need improvement
+ST-1004,Ayesha Malik,Female,22,Islamabad,CS,5,3.6,95,2024-04-01,ayesha.malik@example.com,invalid_phone,130000,YES,No,140000,Excellent
+ST-1005,Hamza Ali,Male,,Peshawar,EE,1,2.1,55,2024-01-30,hamza.ali@example.com,0345-8889990,110000,No,No,70000,Low attendance
+ST-1006,Noor Fatima,Female,20,Karachi,SE,3,4.1,102,2024-02-20,noor.fatima@example.com,0302-4445566,127000,No,Yes,125000,Attendance anomaly
+ST-1007,Bilal Ahmed,Male,200,Quetta,CS,2,1.8,40,2024-03-05,bilal.ahmed@example.com,0309-1231231,100000,no,no,60000,Age outlier
+ST-1008,Hira Sheikh,Female,18,Lahore,IT,1,3.0,88,2024-01-10,hira.sheikh@example.com,0307-9990001,115000,No,Yes,98000,
+ST-1009,Usman Tariq,Male,23,Multan,CS,6,4.8,93,2024-02-28,usman.tariq@example.com,0305-5551212,150000,Yes,No,160000,GPA outlier
+ST-1010,Maryam Iqbal,Female,21,Sargodha,SE,4,3.4,76,2024-02-14,maryam.iqbal@example.com,0306-2223344,-5000,No,No,90000,Fee error
+ST-1011,Zainab Ashraf,Female,20,Faisalabad,IT,3,2.7,,2024-03-12,zainab.ashraf@example.com,0308-7776665,117000,No,Yes,88000,Missing attendance
+ST-1012,Umer Farooq,Male,19,Karachi,CS,2,3.1,82,2024-01-25,umer.farooq@example.com,0311-9090909,121000,No,No,,Missing income
+ST-1013,Ali Raza,Male,20,Lahore,CS,3,3.2,85,2024-01-15,ali.raza@example.com,0300-1234567,120000,Yes,No,95000,Duplicate row
+ST-1014,  Sara   Noor ,Female,22,Islamabad,SE,5,3.5,89,03-18-2024,sara.noor@example.com,0303-1212121,129000,No,Yes,132000,Extra spaces in name
+ST-1015,Imran Qureshi,Male,17,Rawalpindi,EE,1,2.4,63,2024-04-05,imran.qureshi@example.com,0304-5656565,112000,N,No,72000,Scholarship coding issue
+ST-1016,Komal Aziz,Female,24,Hyderabad,IT,7,3.9,97,2024-03-22,komal.aziz@example.com,0310-4545454,135000,Y,Yes,145000,Senior semester

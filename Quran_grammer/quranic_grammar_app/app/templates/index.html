@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>{% if session.get('language') == 'ur' %}🕌 قرآنی گرامر ایپ{% else %}🕌 Quranic Grammar App{% endif %}</h1>
+    <p>
+        {% if session.get('language') == 'ur' %}
+            قرآنی گرامر ویب ایپلیکیشن میں خوش آمدید!
+        {% else %}
+            Welcome to the Quranic Grammar Web Application!
+        {% endif %}
+    </p>
+    <p>
+        {% if session.get('language') == 'ur' %}
+            یہ ایپ قرآن کے لیے لفظ کی سطح پر گرامر تجزیہ فراہم کرتا ہے۔
+        {% else %}
+            This app provides word-level grammar analysis for the Quran.
+        {% endif %}
+    </p>
+    
+    <h2 style="margin-top: 2rem;">{% if session.get('language') == 'ur' %}خصوصیات{% else %}Features{% endif %}</h2>
+    <ul>
+        <li>📖 {% if session.get('language') == 'ur' %}سورتیں اور آیتیں براؤز کریں{% else %}Browse Surahs and Ayahs{% endif %}</li>
+        <li>🔍 {% if session.get('language') == 'ur' %}لفظ کی سطح پر گرامر تجزیہ{% else %}Word-level Grammar Analysis{% endif %}</li>
+        <li>🏷️ {% if session.get('language') == 'ur' %}جڑ اور گرامر ٹیگز{% else %}Root and Grammar Tags{% endif %}</li>
+        <li>💾 {% if session.get('language') == 'ur' %}صارف اکاؤنٹس{% else %}User Accounts{% endif %}</li>
+        <li>📚 {% if session.get('language') == 'ur' %}سیکھنے کی ماڈیول{% else %}Learning Module{% endif %}</li>
+    </ul>
+    
+    <div style="margin-top: 2rem;">
+        <a href="/quran/surahs" class="btn">📖 {% if session.get('language') == 'ur' %}سیکھنا شروع کریں{% else %}Start Learning{% endif %}</a>
+    </div>
+</div>
+
+<div class="card">
+    <h2>{% if session.get('language') == 'ur' %}شروعات کریں{% else %}Getting Started{% endif %}</h2>
+    {% if session.get('language') == 'ur' %}
+        <p>1. قرآن کی تمام سورتیں براؤز کریں</p>
+        <p>2. کسی بھی سورت کو منتخب کریں اس کی آیتیں دیکھنے کے لیے</p>
+        <p>3. کسی بھی آیت پر کلک کریں لفظ کی سطح پر تجزیہ دیکھنے کے لیے</p>
+    {% else %}
+        <p>1. Browse through all Surahs of the Quran</p>
+        <p>2. Select any Surah to view its Ayahs</p>
+        <p>3. Click on any Ayah to see word-level analysis</p>
+    {% endif %}
+    
+    <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ddd;">
+    
+    <h3 style="margin-top: 1rem;">{% if session.get('language') == 'ur' %}📊 ڈیٹا کو سنک کریں{% else %}📊 Sync Data{% endif %}</h3>
+    <p style="color: #666; margin-bottom: 1rem;">
+        {% if session.get('language') == 'ur' %}
+            پہلے اپ لوڈ قرآن ڈیٹا کو سنک کریں تاکہ تمام سورتیں اور آیتیں دستیاب ہوں۔
+        {% else %}
+            Sync Quran data first to load all Surahs and Ayahs with translations.
+        {% endif %}
+    </p>
+    <p>
+        <a href="/admin/sync-data" class="btn" style="background-color: #28a745;">
+            {% if session.get('language') == 'ur' %}سورتیں سنک کریں{% else %}Sync Surahs{% endif %}
+        </a>
+        <a href="/admin/sync-all-ayahs" class="btn" style="background-color: #ffc107; color: #333;">
+            {% if session.get('language') == 'ur' %}تمام ترجمے سنک کریں{% else %}Sync Translations{% endif %}
+        </a>
+        <a href="/admin/status" class="btn" style="background-color: #17a2b8;">
+            {% if session.get('language') == 'ur' %}حالت معلوم کریں{% else %}Check Status{% endif %}
+        </a>
+    </p>
+    
+    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">
+        {% if session.get('language') == 'ur' %}
+            💡 نوٹ: Terminal میں <code>python sync_data.py</code> چلا کر تیز رفتار ڈیٹا سنک کریں
+        {% else %}
+            💡 Tip: Run <code>python sync_data.py</code> in terminal for faster sync
+        {% endif %}
+    </p>
+</div>
+{% endblock %}

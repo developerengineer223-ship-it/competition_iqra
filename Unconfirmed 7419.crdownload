@@ -1,0 +1,5 @@
+import my_string_features as str
+
+str.displayname("Areesha")
+str.getname("Areesha")
+print(dir(str))

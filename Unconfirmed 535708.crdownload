@@ -1,0 +1,28 @@
+import requests
+# Task 1:
+def products_with_low_stock():
+    response = requests.get("https://dummyjson.com/products")
+    data = response.json()
+    for item in data["products"]:
+        if(item["stock"]<40):
+            print(f"Product name: {item["title"]}, \nStock: {item["stock"]}")
+# # Task 2:
+def discounted_total():
+    response = requests.get("https://dummyjson.com/carts/1")
+    data = response.json()
+    total = 0
+    discount = 0.90
+    total = discount * data["total"]
+    print(f"The original total is: {data["total"]}")
+    print(f"The discounted total is: {total}")
+# Task 3:
+def recipes_with_short_cook_time():
+    response = requests.get("https://dummyjson.com/recipes")
+    data = response.json()
+    for item in data["recipes"]:
+        if(item["cookTimeMinutes"]<30):
+            print(f"Recipe name: {item["name"]},\nCook time: {item["cookTimeMinutes"]} minutes")
+
+products_with_low_stock()
+discounted_total()  
+recipes_with_short_cook_time()          

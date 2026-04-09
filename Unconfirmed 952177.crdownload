@@ -1,0 +1,6 @@
+def displayname(name):
+    print(f"Your name is {name}")
+def getname(name):
+    name = input(f"Please enter your name: ")
+    print(f"Your name is {name}")
+    return name

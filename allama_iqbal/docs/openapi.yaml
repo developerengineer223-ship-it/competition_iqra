@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: Iqbal Platform API
+  version: 1.0.0
+paths:
+  /api/verse-of-the-day:
+    get:
+      summary: Get the verse of the day
+      responses:
+        '200':
+          description: Verse details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerseOfTheDay'
+components:
+  schemas:
+    VerseOfTheDay:
+      type: object
+      properties:
+        verse_id:
+          type: integer
+        text_urdu:
+          type: string
+        translations:
+          type: array
+          items:
+            type: object
+            properties:
+              language:
+                type: string
+              text:
+                type: string
+        context:
+          type: string
+        commentary:
+          type: array
+          items:
+            type: object
+            properties:
+              author:
+                type: string
+              text:
+                type: string

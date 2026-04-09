@@ -1,0 +1,630 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>ML Pipeline Performance Report</title>
+            <style>
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    line-height: 1.6;
+                    color: #333;
+                    background-color: #f5f5f5;
+                }
+                .container {
+                    max-width: 1000px;
+                    margin: 0 auto;
+                    background-color: white;
+                    padding: 40px;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                }
+                header {
+                    border-bottom: 3px solid #0066cc;
+                    margin-bottom: 30px;
+                    padding-bottom: 20px;
+                }
+                h1 {
+                    color: #0066cc;
+                    font-size: 2.5em;
+                    margin-bottom: 10px;
+                }
+                .report-meta {
+                    color: #666;
+                    font-size: 0.9em;
+                }
+                .metadata {
+                    background-color: #f0f0f0;
+                    padding: 15px;
+                    border-radius: 5px;
+                    margin-bottom: 20px;
+                    font-size: 0.9em;
+                }
+                .section {
+                    margin-bottom: 40px;
+                    padding: 20px;
+                    border-left: 4px solid #0066cc;
+                    background-color: #f9f9f9;
+                }
+                .section h2 {
+                    color: #0066cc;
+                    margin-bottom: 15px;
+                    font-size: 1.8em;
+                }
+                .section h3 {
+                    color: #333;
+                    margin-top: 15px;
+                    margin-bottom: 10px;
+                    font-size: 1.2em;
+                }
+                .metric {
+                    display: inline-block;
+                    background-color: white;
+                    padding: 15px 20px;
+                    margin: 10px 10px 10px 0;
+                    border-radius: 5px;
+                    border: 1px solid #ddd;
+                    min-width: 200px;
+                    text-align: center;
+                }
+                .metric-value {
+                    font-size: 1.8em;
+                    color: #0066cc;
+                    font-weight: bold;
+                }
+                .metric-label {
+                    font-size: 0.9em;
+                    color: #666;
+                    margin-top: 5px;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin: 15px 0;
+                }
+                th {
+                    background-color: #0066cc;
+                    color: white;
+                    padding: 12px;
+                    text-align: left;
+                }
+                td {
+                    padding: 12px;
+                    border-bottom: 1px solid #ddd;
+                }
+                tr:hover {
+                    background-color: #f5f5f5;
+                }
+                .chart {
+                    margin: 20px 0;
+                    padding: 15px;
+                    background-color: white;
+                    border-radius: 5px;
+                }
+                .recommendation {
+                    background-color: #e8f4f8;
+                    border-left: 4px solid #0066cc;
+                    padding: 15px;
+                    margin: 10px 0;
+                    border-radius: 3px;
+                }
+                .success { color: #28a745; }
+                .warning { color: #ffc107; }
+                .danger { color: #dc3545; }
+                footer {
+                    margin-top: 40px;
+                    padding-top: 20px;
+                    border-top: 1px solid #ddd;
+                    text-align: center;
+                    color: #666;
+                    font-size: 0.9em;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <header>
+                    <h1>📊 ML Pipeline Performance Report</h1>
+                    <div class="report-meta">
+                        Generated on 2026-04-01 20:16:10
+                    </div>
+                </header>
+        
+            <div class="metadata">
+                <strong>Report Metadata:</strong><br>
+            <strong>Model Type:</strong> Regression/Classification<br><strong>Data Points:</strong> 20<br><strong>Features:</strong> N/A<br></div>
+            <div class="section">
+                <h2>Executive Summary</h2>
+            <p>
+            This report presents the performance metrics and quality assessment 
+            of the machine learning model trained on the provided dataset. 
+            Generated: 2026-04-01 20:16:10
+            </p></div>
+            <div class="section">
+                <h2>Model Performance</h2>
+            
+                        <div class="metric">
+                            <div class="metric-value">129702.5036</div>
+                            <div class="metric-label">RMSE</div>
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-value">0.0030</div>
+                            <div class="metric-label">R2</div>
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-value">111742.6865</div>
+                            <div class="metric-label">MAE</div>
+                        </div>
+                        </div>
+            <div class="section">
+                <h2>Data Quality Metrics</h2>
+            <p><strong>Missing Values:</strong> 0.58%</p><p><strong>Duplicates:</strong> 0</p><p><strong>Quality Score:</strong> 95%</p></div>
+            <div class="section">
+                <h2>Prediction Sample</h2>
+            <table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>price</th>
+      <th>square_feet</th>
+      <th>bedrooms</th>
+      <th>bathrooms</th>
+      <th>age_years</th>
+      <th>garage_spaces</th>
+      <th>pool</th>
+      <th>neighborhood</th>
+      <th>condition</th>
+      <th>description</th>
+      <th>id_squared</th>
+      <th>id_sqrt</th>
+      <th>square_feet_squared</th>
+      <th>square_feet_sqrt</th>
+      <th>bedrooms_squared</th>
+      <th>bedrooms_sqrt</th>
+      <th>bathrooms_squared</th>
+      <th>bathrooms_sqrt</th>
+      <th>age_years_squared</th>
+      <th>age_years_sqrt</th>
+      <th>neighborhood_encoded</th>
+      <th>condition_encoded</th>
+      <th>id_x_square_feet</th>
+      <th>id_x_bedrooms</th>
+      <th>square_feet_x_bedrooms</th>
+      <th>description_992</th>
+      <th>description_993</th>
+      <th>description_994</th>
+      <th>description_995</th>
+      <th>description_996</th>
+      <th>id_scaled</th>
+      <th>square_feet_scaled</th>
+      <th>bedrooms_scaled</th>
+      <th>bathrooms_scaled</th>
+      <th>age_years_scaled</th>
+      <th>garage_spaces_scaled</th>
+      <th>pool_scaled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>218543.053481</td>
+      <td>1577.558301</td>
+      <td>4</td>
+      <td>2.977341</td>
+      <td>52.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>Downtown</td>
+      <td>Fair</td>
+      <td>Property in location 0</td>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>2.488690e+06</td>
+      <td>39.718488</td>
+      <td>16</td>
+      <td>2.000000</td>
+      <td>8.864561</td>
+      <td>1.725497</td>
+      <td>2704.0</td>
+      <td>7.211103</td>
+      <td>281346.191223</td>
+      <td>265728.289452</td>
+      <td>1577.558301</td>
+      <td>4</td>
+      <td>6310.233204</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.730320</td>
+      <td>-1.102179</td>
+      <td>0.688912</td>
+      <td>0.510018</td>
+      <td>0.109651</td>
+      <td>-1.326331</td>
+      <td>0.941697</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>477821.437884</td>
+      <td>3075.983979</td>
+      <td>3</td>
+      <td>1.326680</td>
+      <td>54.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>Rural</td>
+      <td>Good</td>
+      <td>Property in location 1</td>
+      <td>4</td>
+      <td>1.414214</td>
+      <td>9.461677e+06</td>
+      <td>55.461554</td>
+      <td>9</td>
+      <td>1.732051</td>
+      <td>1.760080</td>
+      <td>1.151816</td>
+      <td>2916.0</td>
+      <td>7.348469</td>
+      <td>267731.694476</td>
+      <td>266790.120708</td>
+      <td>6151.967958</td>
+      <td>6</td>
+      <td>9227.951937</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.726856</td>
+      <td>0.119447</td>
+      <td>-0.014059</td>
+      <td>-1.429854</td>
+      <td>0.179973</td>
+      <td>-1.326331</td>
+      <td>-1.061913</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>379397.273815</td>
+      <td>4466.372511</td>
+      <td>4</td>
+      <td>2.909616</td>
+      <td>36.0</td>
+      <td>3.0</td>
+      <td>0</td>
+      <td>Suburbs</td>
+      <td>Poor</td>
+      <td>Property in location 2</td>
+      <td>9</td>
+      <td>1.732051</td>
+      <td>1.994848e+07</td>
+      <td>66.830925</td>
+      <td>16</td>
+      <td>2.000000</td>
+      <td>8.465865</td>
+      <td>1.705760</td>
+      <td>1296.0</td>
+      <td>6.000000</td>
+      <td>262766.534412</td>
+      <td>273523.789274</td>
+      <td>13399.117532</td>
+      <td>12</td>
+      <td>17865.490043</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.723391</td>
+      <td>1.252992</td>
+      <td>0.688912</td>
+      <td>0.430427</td>
+      <td>-0.452924</td>
+      <td>1.402942</td>
+      <td>-1.061913</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>319396.317889</td>
+      <td>3875.344523</td>
+      <td>2</td>
+      <td>2.494708</td>
+      <td>55.0</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>Downtown</td>
+      <td>Excellent</td>
+      <td>Property in location 3</td>
+      <td>16</td>
+      <td>2.000000</td>
+      <td>1.501830e+07</td>
+      <td>62.252265</td>
+      <td>4</td>
+      <td>1.414214</td>
+      <td>6.223568</td>
+      <td>1.579464</td>
+      <td>3025.0</td>
+      <td>7.416198</td>
+      <td>281346.191223</td>
+      <td>276815.300519</td>
+      <td>15501.378092</td>
+      <td>8</td>
+      <td>7750.689046</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.719927</td>
+      <td>0.771143</td>
+      <td>-0.717031</td>
+      <td>-0.057177</td>
+      <td>0.215134</td>
+      <td>-0.416573</td>
+      <td>-1.061913</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>120208.388199</td>
+      <td>4187.556821</td>
+      <td>2</td>
+      <td>2.220022</td>
+      <td>58.0</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>Rural</td>
+      <td>Good</td>
+      <td>Property in location 4</td>
+      <td>25</td>
+      <td>2.236068</td>
+      <td>1.753563e+07</td>
+      <td>64.711335</td>
+      <td>4</td>
+      <td>1.414214</td>
+      <td>4.928499</td>
+      <td>1.489974</td>
+      <td>3364.0</td>
+      <td>7.615773</td>
+      <td>267731.694476</td>
+      <td>266790.120708</td>
+      <td>20937.784105</td>
+      <td>10</td>
+      <td>8375.113642</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.716463</td>
+      <td>1.025681</td>
+      <td>-0.717031</td>
+      <td>-0.379990</td>
+      <td>0.320617</td>
+      <td>-0.416573</td>
+      <td>0.941697</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>120197.534151</td>
+      <td>3566.890140</td>
+      <td>1</td>
+      <td>3.859060</td>
+      <td>92.0</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>Rural</td>
+      <td>Excellent</td>
+      <td>Property in location 5</td>
+      <td>36</td>
+      <td>2.449490</td>
+      <td>1.272271e+07</td>
+      <td>59.723447</td>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>14.892345</td>
+      <td>1.964449</td>
+      <td>8464.0</td>
+      <td>9.591663</td>
+      <td>267731.694476</td>
+      <td>276815.300519</td>
+      <td>21401.340841</td>
+      <td>6</td>
+      <td>3566.890140</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.712999</td>
+      <td>0.519669</td>
+      <td>-1.420002</td>
+      <td>1.546222</td>
+      <td>1.516090</td>
+      <td>0.493184</td>
+      <td>0.941697</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>76137.625476</td>
+      <td>3707.561571</td>
+      <td>5</td>
+      <td>2.567619</td>
+      <td>68.0</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>Rural</td>
+      <td>Good</td>
+      <td>Property in location 6</td>
+      <td>49</td>
+      <td>2.645751</td>
+      <td>1.374601e+07</td>
+      <td>60.889749</td>
+      <td>25</td>
+      <td>2.236068</td>
+      <td>6.592668</td>
+      <td>1.602379</td>
+      <td>4624.0</td>
+      <td>8.246211</td>
+      <td>267731.694476</td>
+      <td>266790.120708</td>
+      <td>25952.930997</td>
+      <td>35</td>
+      <td>18537.807855</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.709535</td>
+      <td>0.634354</td>
+      <td>1.391883</td>
+      <td>0.028509</td>
+      <td>0.672227</td>
+      <td>-0.416573</td>
+      <td>0.941697</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>439779.265599</td>
+      <td>4366.621737</td>
+      <td>4</td>
+      <td>1.657352</td>
+      <td>72.0</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>Rural</td>
+      <td>Fair</td>
+      <td>Property in location 7</td>
+      <td>64</td>
+      <td>2.828427</td>
+      <td>1.906739e+07</td>
+      <td>66.080419</td>
+      <td>16</td>
+      <td>2.000000</td>
+      <td>2.746817</td>
+      <td>1.287382</td>
+      <td>5184.0</td>
+      <td>8.485281</td>
+      <td>267731.694476</td>
+      <td>265728.289452</td>
+      <td>34932.973893</td>
+      <td>32</td>
+      <td>17466.486946</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.706071</td>
+      <td>1.171668</td>
+      <td>0.688912</td>
+      <td>-1.041245</td>
+      <td>0.812871</td>
+      <td>-0.416573</td>
+      <td>-1.061913</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>320501.755284</td>
+      <td>1848.605637</td>
+      <td>1</td>
+      <td>2.376890</td>
+      <td>58.0</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>Rural</td>
+      <td>Excellent</td>
+      <td>Property in location 8</td>
+      <td>81</td>
+      <td>3.000000</td>
+      <td>3.417343e+06</td>
+      <td>42.995414</td>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>5.649608</td>
+      <td>1.541717</td>
+      <td>3364.0</td>
+      <td>7.615773</td>
+      <td>267731.694476</td>
+      <td>276815.300519</td>
+      <td>16637.450735</td>
+      <td>9</td>
+      <td>1848.605637</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.702607</td>
+      <td>-0.881201</td>
+      <td>-1.420002</td>
+      <td>-0.195637</td>
+      <td>0.320617</td>
+      <td>-0.416573</td>
+      <td>0.941697</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>368632.660008</td>
+      <td>2855.584847</td>
+      <td>5</td>
+      <td>3.758162</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>Rural</td>
+      <td>Excellent</td>
+      <td>Property in location 9</td>
+      <td>100</td>
+      <td>3.162278</td>
+      <td>8.154365e+06</td>
+      <td>53.437673</td>
+      <td>25</td>
+      <td>2.236068</td>
+      <td>14.123783</td>
+      <td>1.938598</td>
+      <td>1.0</td>
+      <td>1.000000</td>
+      <td>267731.694476</td>
+      <td>276815.300519</td>
+      <td>28555.848473</td>
+      <td>50</td>
+      <td>14277.924237</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-1.699143</td>
+      <td>-0.060239</td>
+      <td>1.391883</td>
+      <td>1.427646</td>
+      <td>-1.683558</td>
+      <td>0.493184</td>
+      <td>0.941697</td>
+    </tr>
+  </tbody>
+</table></div>
+                <footer>
+                    <p>This report was automatically generated by the ML Pipeline Engine.</p>
+                    <p>For questions or feedback, please contact the Data Science team.</p>
+                </footer>
+            </div>
+        </body>
+        </html>
+        

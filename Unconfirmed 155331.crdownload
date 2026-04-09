@@ -1,0 +1,36 @@
+words = ["python", "java", "javascript", "oop"]
+for index, item in enumerate(words):   #enumerate()
+    print(f"Value at {index} is: {item}")
+
+for item in range(2,7,2):              #range()
+    print(f"Value {item}")
+
+languages = ["python", "java", "javascript", "oop", "go", "csharp"]
+if(len(languages) > 5):               #len()
+    print("You may proceed further")
+
+languages = ["python", "java", "javascript", "oop", "go", "csharp"]
+for item in languages:
+    if(item == "python"):
+        print("found")
+        break
+    else:
+        print("you are not there")
+
+languages = ["python", "java", "javascript", "oop", "go", "csharp"]
+found = False    # its good to make this variable so that the code runs soomthly and the output displays one time.
+for item in languages:
+    if(item == "python"):
+        found = True
+        break           #break
+if(found):
+    print("Yes python found in the list")
+else:
+    print("no found in the list")   
+
+words = ["success", "valid", "404", "coding"]
+for items in words:
+    if(item == "404"):
+        continue       #continue
+    print(item)
+

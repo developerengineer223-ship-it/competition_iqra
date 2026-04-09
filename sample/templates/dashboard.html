@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Monitoring Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { background: #f8f9fa; }
+        .dashboard-card { margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+<div class="container py-4">
+    <h1 class="mb-4">Health Monitoring Dashboard</h1>
+    <form id="filter-form" class="row g-3 mb-4">
+        <div class="col-md-2">
+            <label for="age" class="form-label">Age Range</label>
+            <input type="text" class="form-control" id="age" name="age" placeholder="18-80">
+        </div>
+        <div class="col-md-2">
+            <label for="condition" class="form-label">Condition</label>
+            <select class="form-select" id="condition" name="condition" multiple>
+                <option>Normal</option>
+                <option>Pre-hypertension</option>
+                <option>High-Risk</option>
+                <option>Diabetes</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="stress_level" class="form-label">Stress Level</label>
+            <select class="form-select" id="stress_level" name="stress_level" multiple>
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" id="gender" name="gender" multiple>
+                <option>M</option>
+                <option>F</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="date_from" class="form-label">Date From</label>
+            <input type="date" class="form-control" id="date_from" name="date_from">
+        </div>
+        <div class="col-md-2">
+            <label for="date_to" class="form-label">Date To</label>
+            <input type="date" class="form-control" id="date_to" name="date_to">
+        </div>
+        <div class="col-12">
+            <button type="button" class="btn btn-primary" id="apply-filters">Apply Filters</button>
+            <button type="button" class="btn btn-secondary" id="reset-filters">Reset</button>
+        </div>
+    </form>
+    <div id="stats" class="row mb-4"></div>
+    <div id="charts" class="row mb-4"></div>
+    <div id="records" class="row"></div>
+</div>
+<script>
+    async function fetchAndRender() {
+        // Collect filters
+        let filters = {};
+        let age = document.getElementById('age').value.split('-');
+        if (age.length === 2) filters['age'] = [parseInt(age[0]), parseInt(age[1])];
+        let condition = Array.from(document.getElementById('condition').selectedOptions).map(o => o.value);
+        if (condition.length) filters['condition'] = condition;
+        let stress = Array.from(document.getElementById('stress_level').selectedOptions).map(o => o.value);
+        if (stress.length) filters['stress_level'] = stress;
+        let gender = Array.from(document.getElementById('gender').selectedOptions).map(o => o.value);
+        if (gender.length) filters['gender'] = gender;
+        let date_from = document.getElementById('date_from').value;
+        let date_to = document.getElementById('date_to').value;
+        if (date_from && date_to) filters['date'] = [date_from, date_to];
+        // Fetch filtered data
+        let res = await fetch('/api/filters/apply', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(filters)
+        });
+        let data = await res.json();
+        // Render stats
+        let statsDiv = document.getElementById('stats');
+        statsDiv.innerHTML = `<div class='col'><div class='card dashboard-card'><div class='card-body'><h5>Total Records</h5><p>${data.total}</p></div></div></div>`;
+        // Render records
+        let recDiv = document.getElementById('records');
+        recDiv.innerHTML = '<h4>Records</h4>' + data.records.map(r => `<div class='col-12'><div class='card mb-2'><div class='card-body'>${r.name || ''} | Age: ${r.age} | HR: ${r.heart_rate} | BP: ${r.bp_systolic}/${r.bp_diastolic} | Condition: ${r.condition}</div></div></div>`).join('');
+        // TODO: Render charts using Plotly
+    }
+    document.getElementById('apply-filters').onclick = fetchAndRender;
+    document.getElementById('reset-filters').onclick = () => { window.location.reload(); };
+    window.onload = fetchAndRender;
+</script>
+</body>
+</html>

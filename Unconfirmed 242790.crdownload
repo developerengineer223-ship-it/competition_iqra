@@ -1,0 +1,29 @@
+# Variables 
+
+name = "ali"
+price = 500
+city = "Lahore"
+print(f"Your name is {name}")  # 'f' format for displaying content 
+print(f"Your product price is {price}")
+print(f"Your city is {city}")
+
+word = "welcome"
+print(type(word)) # type() function
+
+name = input("Enter your name:")
+age = int(input("Enter your age: ")) # int() to convert string into integer 
+city = input("Enter your city: ")
+job_title = input("Enter your job_title: ")
+print(type(age))
+print(f"Your following info is received as: name:{name}, age:{age}, city:{city}, job_title:{job_title}")
+
+# Some useful string operations/ methods
+
+text1 = input("Enter your text:")
+new_text1= text1.strip()  #strip() function, it removes extra spaces from front and end
+print(new_text1)
+
+text2 = input("Enter your text:")
+new_text2 = text2.replace("$", ".")  #replace() function, it replaces onething with another 
+print(new_text2)
+

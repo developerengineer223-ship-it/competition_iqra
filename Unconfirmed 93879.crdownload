@@ -1,0 +1,17 @@
+# Task
+gmail = input("Enter your gmail: ")
+phone_no = input("Enter your phone number: ") # no need to convert it to interger cuz the string functions won't be applicable on it then 
+spaceless_gmail = gmail.strip()
+print(spaceless_gmail)
+extract_gmail = spaceless_gmail.replace("@gmail.com", "")
+extract_phoneno = phone_no.replace("-", "")
+print(extract_gmail)
+print(extract_phoneno)
+# Some more useful string operations:
+text = input ("Enter your text:")
+new_text = text.upper() #upper(), lower(), capitaliza(), title()
+print(new_text)
+
+text1 = input ("Enter your text:")
+new_text1 = text1.startswith("") #startswith(""), endswith("") , it gives True or False output
+print(new_text1)

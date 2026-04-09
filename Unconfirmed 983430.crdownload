@@ -1,0 +1,39 @@
+# 1) Write a program that creates a new list containing only the words that end with the letter "e" and print the result.
+words = ["apple", "banana", "grapes", "orange", "pineapple"]
+ending_e_list = []
+for items in words:
+    if(items.endswith("e")):
+        ending_e_list.append(items)
+print(f"The words ending with'e' are as following: {ending_e_list}")
+
+# 2) Write a program that creates a new list containing only the even numbers from the list and prints them.
+numbers = [12, 7, 25, 18, 3, 40, 9]
+even_numbers = []
+for values in numbers:
+    if(values % 2 == 0):
+        even_numbers.append(values)
+print(f"Following is the list of even numbers: {even_numbers}")
+
+# 3) Write a program that creates a new list containing only the words that have more than 5 characters.
+text = ["table", "chair","notebook", "pen", "laptop"]
+more_character = []
+for character in text:
+    if(len(character)>5):             # len(var_name) used to check the length of a word
+        more_character.append(character)
+print(f"Words having more than 5 characters are: {more_character}")
+
+# 4)Write a program that creates a new list containing only the names that start with a capital letter.
+letters = ["Ali", "sara", "Ahmed", "john", "Fatima"]
+capital_letter = []
+for name in letters:
+    if(name[0].isupper()):           # isupper() checks if letter is uppercase
+        capital_letter.append(name)
+print(f"Names starting with capital letter are: {capital_letter}")
+
+# 5) Write a program that creates a new list containing only the numbers that are greater than 50 and print the result.
+numbers = [10, 75, 32, 90, 45, 60, 12]
+greater_number = []
+for num in numbers:
+    if (num > 50):
+        greater_number.append(num)
+print(f"Numbers greater than 50 are: {greater_number}")

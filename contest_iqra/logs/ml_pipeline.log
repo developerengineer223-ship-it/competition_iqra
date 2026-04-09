@@ -1,0 +1,48 @@
+2026-04-01 19:48:56,755 - governance - INFO - Logging initialized to logs\ml_pipeline.log
+2026-04-01 19:48:56,755 - governance - INFO - Governance module initialized
+2026-04-01 19:48:56,755 - governance - INFO - Monitoring data quality
+2026-04-01 19:48:56,766 - governance - INFO - Monitoring prediction latency
+2026-04-01 19:48:56,766 - governance - INFO - Checking drift for price
+2026-04-01 19:48:56,771 - governance - WARNING - Drift detected in price (p-value: 0.0000)
+2026-04-01 19:48:56,771 - governance - WARNING - ALERT [WARNING]: DRIFT_DETECTED - Data drift detected in price
+2026-04-01 19:48:56,771 - governance - INFO - Sending alert notification to admin@company.com
+2026-04-01 19:49:24,175 - governance - INFO - Logging initialized to logs\ml_pipeline.log
+2026-04-01 19:49:24,175 - governance - INFO - Governance module initialized
+2026-04-01 19:49:24,175 - governance - INFO - Monitoring data quality
+2026-04-01 19:49:24,181 - governance - INFO - Monitoring prediction latency
+2026-04-01 19:49:24,182 - governance - INFO - Checking drift for price
+2026-04-01 19:49:24,184 - governance - WARNING - Drift detected in price (p-value: 0.0000)
+2026-04-01 19:49:24,184 - governance - WARNING - ALERT [WARNING]: DRIFT_DETECTED - Data drift detected in price
+2026-04-01 19:49:24,184 - governance - INFO - Sending alert notification to admin@company.com
+2026-04-01 19:50:37,587 - governance - INFO - Logging initialized to logs\ml_pipeline.log
+2026-04-01 19:50:37,588 - governance - INFO - Governance module initialized
+2026-04-01 19:50:37,588 - governance - INFO - Monitoring data quality
+2026-04-01 19:50:37,599 - governance - INFO - Monitoring prediction latency
+2026-04-01 19:50:37,600 - governance - INFO - Checking drift for price
+2026-04-01 19:50:37,604 - governance - WARNING - Drift detected in price (p-value: 0.0000)
+2026-04-01 19:50:37,604 - governance - WARNING - ALERT [WARNING]: DRIFT_DETECTED - Data drift detected in price
+2026-04-01 19:50:37,604 - governance - INFO - Sending alert notification to admin@company.com
+2026-04-01 19:53:21,839 - governance - INFO - Logging initialized to logs\ml_pipeline.log
+2026-04-01 19:53:21,840 - governance - INFO - Governance module initialized
+2026-04-01 19:53:21,840 - governance - INFO - Monitoring data quality
+2026-04-01 19:53:21,851 - governance - INFO - Monitoring prediction latency
+2026-04-01 19:53:21,852 - governance - INFO - Checking drift for price
+2026-04-01 19:53:21,855 - governance - WARNING - Drift detected in price (p-value: 0.0000)
+2026-04-01 19:53:21,855 - governance - WARNING - ALERT [WARNING]: DRIFT_DETECTED - Data drift detected in price
+2026-04-01 19:53:21,855 - governance - INFO - Sending alert notification to admin@company.com
+2026-04-01 20:16:10,629 - governance - INFO - Logging initialized to logs\ml_pipeline.log
+2026-04-01 20:16:10,629 - governance - INFO - Governance module initialized
+2026-04-01 20:16:10,629 - governance - INFO - Monitoring data quality
+2026-04-01 20:16:10,638 - governance - INFO - Monitoring prediction latency
+2026-04-01 20:16:10,639 - governance - INFO - Checking drift for price
+2026-04-01 20:16:10,641 - governance - WARNING - Drift detected in price (p-value: 0.0000)
+2026-04-01 20:16:10,641 - governance - WARNING - ALERT [WARNING]: DRIFT_DETECTED - Data drift detected in price
+2026-04-01 20:16:10,641 - governance - INFO - Sending alert notification to admin@company.com
+2026-04-01 21:03:48,984 - governance - INFO - Logging initialized to logs\ml_pipeline.log
+2026-04-01 21:03:48,985 - governance - INFO - Governance module initialized
+2026-04-01 21:03:48,985 - governance - INFO - Monitoring data quality
+2026-04-01 21:03:48,992 - governance - INFO - Monitoring prediction latency
+2026-04-01 21:03:48,993 - governance - INFO - Checking drift for price
+2026-04-01 21:03:48,995 - governance - WARNING - Drift detected in price (p-value: 0.0000)
+2026-04-01 21:03:48,996 - governance - WARNING - ALERT [WARNING]: DRIFT_DETECTED - Data drift detected in price
+2026-04-01 21:03:48,996 - governance - INFO - Sending alert notification to admin@company.com

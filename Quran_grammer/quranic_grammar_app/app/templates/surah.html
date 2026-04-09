@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>📖 {{ surah.name }}</h1>
+    <p>{% if session.get('language') == 'ur' %}کل آیتیں{% else %}Total Ayahs{% endif %}: <strong>{{ surah.total_ayahs }}</strong></p>
+</div>
+
+{% if ayahs %}
+    {% for ayah in ayahs %}
+        <div class="card rtl">
+            <h3>{% if session.get('language') == 'ur' %}آیت {% else %}Ayah {% endif %}{{ ayah.ayah_number }}</h3>
+            
+            <!-- Arabic Text -->
+            <p style="font-size: 1.3rem; margin: 1.5rem 0; line-height: 2; font-family: 'Arial Unicode MS', 'Simplified Arabic', serif;">
+                {{ ayah.text_arabic }}
+            </p>
+            
+            <!-- Translations -->
+            {% if ayah.translation_en or ayah.translation_ur or ayah.translation %}
+                <div style="margin: 1.5rem 0; padding: 1rem; background: #f5f5f5; border-left: 3px solid #667eea; border-radius: 5px;">
+                    {% if ayah.translation_en %}
+                        <p style="margin: 0.5rem 0;"><strong>📘 English:</strong></p>
+                        <p style="margin: 0.5rem 0; color: #333;">{{ ayah.translation_en }}</p>
+                    {% endif %}
+                    
+                    {% if ayah.translation_ur %}
+                        <p style="margin: 1rem 0 0.5rem 0;"><strong>📗 اردو:</strong></p>
+                        <p style="margin: 0.5rem 0; color: #333; font-family: 'Arial Unicode MS', 'Simplified Arabic', serif;">{{ ayah.translation_ur }}</p>
+                    {% endif %}
+                    
+                    {% if not ayah.translation_en and not ayah.translation_ur and ayah.translation %}
+                        <p style="font-style: italic; color: #666;">{{ ayah.translation }}</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+            
+            <a href="/quran/ayah/{{ ayah.id }}" class="btn">{% if session.get('language') == 'ur' %}تجزیہ کریں{% else %}Analyze{% endif %}</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p>
+            {% if session.get('language') == 'ur' %}
+                اس سورت کے لیے کوئی آیتیں نہیں ملیں۔
+            {% else %}
+                No ayahs found for this surah.
+            {% endif %}
+        </p>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1 style="color: #dc3545;">{% if session.get('language') == 'ur' %}رجسٹریشن بند ہے{% else %}Registration Closed{% endif %}</h1>
+    <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+        {% if session.get('language') == 'ur' %}
+            معاف کیجیے، فی الوقت نئے صارفین کے لیے رجسٹریشن نظام بند ہے۔
+        {% else %}
+            Sorry, the registration system is currently closed for new users.
+        {% endif %}
+    </p>
+    
+    <p style="color: #666; margin-bottom: 2rem;">
+        {% if session.get('language') == 'ur' %}
+            براہ کرم منتظم سے رابطہ کریں اگر آپ کو کوئی سوال ہو۔
+        {% else %}
+            Please contact the administrator if you have any questions.
+        {% endif %}
+    </p>
+    
+    <a href="{{ url_for('auth.login') }}" class="btn">{% if session.get('language') == 'ur' %}لاگ ان کریں{% else %}Go to Login{% endif %}</a>
+</div>
+{% endblock %}

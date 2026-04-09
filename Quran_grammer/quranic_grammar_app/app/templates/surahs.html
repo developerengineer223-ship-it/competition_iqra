@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>📖 {% if session.get('language') == 'ur' %}تمام سورتیں{% else %}All Surahs{% endif %}</h1>
+    
+    {% if surahs %}
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
+            {% for surah in surahs %}
+                <div style="border: 1px solid #ddd; padding: 1rem; border-radius: 5px;">
+                    <h3>{{ surah.name }}</h3>
+                    <p>{% if session.get('language') == 'ur' %}کل آیتیں{% else %}Total Ayahs{% endif %}: <strong>{{ surah.total_ayahs }}</strong></p>
+                    <a href="/quran/surah/{{ surah.id }}" class="btn">{% if session.get('language') == 'ur' %}دیکھیں{% else %}View{% endif %}</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>
+            {% if session.get('language') == 'ur' %}
+                کوئی سورتیں نہیں ملیں۔ براہ کرم قرآن کا ڈیٹا لوڈ کریں۔
+            {% else %}
+                No surahs found. Please load Quran data.
+            {% endif %}
+        </p>
+    {% endif %}
+</div>
+{% endblock %}

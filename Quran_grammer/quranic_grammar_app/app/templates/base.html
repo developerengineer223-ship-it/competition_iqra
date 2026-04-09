@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="{% if session.get('language') == 'ur' %}ur{% else %}en{% endif %}" dir="{% if session.get('language') == 'ur' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Quranic Grammar | قرآن گرامر{% endblock %}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 2rem;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+            flex: 1;
+        }
+        
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .navbar a:hover {
+            color: #667eea;
+        }
+        
+        .navbar-right {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .language-toggle {
+            background-color: #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        .language-toggle a {
+            color: white;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .language-toggle a.active {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        h1, h2, h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #764ba2;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        
+        .rtl {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        .ltr {
+            direction: ltr;
+            text-align: left;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body {% if session.get('language') == 'ur' %}class="rtl"{% endif %}>
+    <nav class="navbar">
+        <div class="navbar-menu">
+            <a href="/" class="navbar-brand">📚 Quranic Grammar | قرآن گرامر</a>
+            <a href="/">{% if session.get('language') == 'ur' %}گھر{% else %}Home{% endif %}</a>
+            {% if current_user.is_authenticated %}
+                <a href="/quran/surahs">{% if session.get('language') == 'ur' %}سورتیں{% else %}Surahs{% endif %}</a>
+            {% else %}
+                <a href="/quran/surahs">{% if session.get('language') == 'ur' %}سورتیں{% else %}Surahs{% endif %}</a>
+            {% endif %}
+        </div>
+        <div class="navbar-right">
+            <div class="language-toggle">
+                <a href="/auth/set-language/en" class="{% if session.get('language') != 'ur' %}active{% endif %}">EN</a>
+                <span style="color: white;">/</span>
+                <a href="/auth/set-language/ur" class="{% if session.get('language') == 'ur' %}active{% endif %}">اردو</a>
+            </div>
+        </nav>
+    
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+    </div>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

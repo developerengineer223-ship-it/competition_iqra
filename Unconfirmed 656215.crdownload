@@ -1,0 +1,18 @@
+books = ["phy", "bio", "mathematics" ,"testestetstets"]
+largest_title = []
+found = False
+for index, items in enumerate(books):
+    if(len(items) > 5): #This will also not work beacuse on unknown data it will give wrong answer. 
+        found = True #Issue is here cuz when its goes to mathematics the condition is true and it terminated there and doesnot check the next works and the words after that can be greater. 
+        largest_title.append(items)
+        break
+print(f"The book with lagest title is at index {index} and is {largest_title}")
+
+books = ["english", "urdu", "persian", "computer"]
+largest_book = books[0]#suppose kiya hai ke yeh bari hai and then is se compare kare ge baki sab ko.
+large_book_index = -20
+for index, book in enumerate(books):
+    if(len(book) > len(largest_book)):
+        largest_book = book
+        large_book_index = index
+print(f"The book with lagest title is at index {large_book_index} and is {largest_book}")

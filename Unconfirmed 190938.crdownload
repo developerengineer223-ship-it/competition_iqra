@@ -1,0 +1,15 @@
+import requests
+response = requests.get("https://jsonplaceholder.typicode.com/posts/1") # GET is used to fetch data from a specific website.
+data  = response.json() # to get the response as JSON and print it.
+print(data["title"])
+print(response.status_code) # to check the status code of the response.
+
+# print(response.text) # to check plain data.
+# print(response.raw) # to check the raw data.
+
+data = {
+    "name" : "ahmad",
+    "age" : 30
+}
+response = requests.post("https://jsonplaceholder.typicode.com/posts",json=data) # POST is used to send data to server.
+print(response)

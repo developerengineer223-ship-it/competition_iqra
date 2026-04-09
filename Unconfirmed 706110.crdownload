@@ -1,0 +1,27 @@
+# Task 
+name = input("Enter your name:")
+if(name == "" ):
+    print("Please enter your name ")
+else:
+    print(f"Your name is: {name}")  
+
+age = input("Enter your age:")
+if( age == ""):
+    print("Please enter your age")
+else: 
+    print(f"Your age is: {age}")  
+# Another way to do the task
+name = input("Enter your name:")
+age = input("Enter your age:")
+if(name and age):
+    print(f"Your name is {name} and age is {age}")
+else:
+    print("Enter your required data")  
+
+#  For loop and list 
+words = ["python", "code", "logic", "programming", "test"]
+p_list = []
+for item in words:
+    if(item[0] == "p"):
+        p_list.append(item)
+print(f"Items that starts with p are: {p_list}")        

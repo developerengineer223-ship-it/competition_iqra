@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>📝 {% if session.get('language') == 'ur' %}لفظ کی سطح پر تجزیہ{% else %}Word-Level Analysis{% endif %}</h1>
+    
+    <div class="rtl" style="margin-bottom: 2rem;">
+        <p style="font-size: 1.2rem; margin: 1rem 0;">{{ ayah.text_arabic }}</p>
+        <p style="font-style: italic; color: #666;">{{ ayah.translation }}</p>
+    </div>
+    
+    <h2>{% if session.get('language') == 'ur' %}الفاظ اور گرامر{% else %}Words & Grammar{% endif %}</h2>
+    
+    {% if ayah.words %}
+        <div style="display: grid; gap: 1rem;">
+            {% for word in ayah.words %}
+                <div style="border-left: 4px solid #667eea; padding: 1rem; background-color: #f8f9ff; border-radius: 5px;">
+                    <h3 class="rtl" style="font-size: 1.3rem;">{{ word.word_text }}</h3>
+                    <p><strong>{% if session.get('language') == 'ur' %}جڑ{% else %}Root{% endif %}:</strong> {{ word.root or 'N/A' }}</p>
+                    <p><strong>{% if session.get('language') == 'ur' %}قسم{% else %}Type{% endif %}:</strong> {{ word.word_type or 'N/A' }}</p>
+                    
+                    {% if word.grammar_tags %}
+                        <h4>{% if session.get('language') == 'ur' %}گرامر ٹیگز{% else %}Grammar Tags{% endif %}:</h4>
+                        <ul>
+                            {% for tag in word.grammar_tags %}
+                                <li><strong>{{ tag.tag_type }}:</strong> {{ tag.description }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>
+            {% if session.get('language') == 'ur' %}
+                ابھی تک لفظ کا تجزیہ دستیاب نہیں ہے۔
+            {% else %}
+                No word analysis available yet.
+            {% endif %}
+        </p>
+    {% endif %}
+</div>
+{% endblock %}

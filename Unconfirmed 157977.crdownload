@@ -1,0 +1,26 @@
+import pandas as pd
+data = {
+    "names" : ["ahmed", "ali", "zara"],
+    "ages" : [22,18,25],
+    "city" : ["khushab", "sargodha", "lahore"]
+}
+
+# make dataframe from actual data before manipulation.
+df = pd.DataFrame(data) # converts the data into data frame.
+print(df)
+# print(df["city"][0]) 
+# print(df.loc[0]) # gives the first row of the data frame.
+# df.info() # details about data, how much null values data contain.
+# df.describe() # statistical details about data
+# df.shape # provide number of rows and columns (count)
+# print(df[df["ages"]>20]) # to filter data from dataframe directly(if else wali cheez nahi karni to)
+
+# To make new column in data frame:
+# df["status"] = "young"
+# print(df)
+# Conditional assignment 
+df.loc[df["ages"]>18, "status"] = "adults" 
+df.loc[df["ages"]<=18, "status"] = "young"
+df.to_csv("results.csv", index=False) # to save the data frame in csv file, index false to avoid index column in csv file.
+
+

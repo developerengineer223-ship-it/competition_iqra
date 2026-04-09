@@ -1,0 +1,26 @@
+import pandas as pd
+df = pd.read_csv("students.csv")
+print(df)
+# print(df.info())
+df.head() # by default, it will show the first 5 rows of the DataFrame.
+df.tail() # by default, it will show the last 5 rows of the DataFrame.
+df.rename(columns={"full_name": "Name"}, inplace=True) # Renaming the column "full_name" to "Name".
+df.isna() # to check for missing values in the DataFrame, gives true/false for each cell.
+df.isna().sum()# to get the count of missing/null values in each column.
+
+
+# age_null_values = df.loc[:, "age"].isna().sum() # to get the null values count in specific colunm
+# print(age_null_values)
+# null_values_in_age = df["age"].isna().sum()
+# print(null_values_in_age) 
+
+results = df["remarks"].dropna() # this only prints the remarks column and not the whole dataframe, and dropna() is used to remove the null values from the remarks column.
+# print(results)
+# print(df.dropna(subset=["remarks"])) # (for column basis) this will drop the rows where the remarks column has null values, and gives the whole dataframe.
+# print(df.dropna(axis=0)) # (for row basis) this will drop the rows where any column has null values, and gives the whole dataframe.
+print(df.drop(["hostel"], axis=1)) # (axis=0, row)(axis=1, column) this will drop the hostel column from the dataframe, and gives the whole dataframe without the hostel column.
+
+df["age"].max() # to get the maximum age from the age column.
+df["age"].min() # to get the minimum age from the age column.
+
+

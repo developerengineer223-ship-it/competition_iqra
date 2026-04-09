@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&family=Inter:wght@400;700&display=swap');
+
+body {
+  background: #F5E9DA;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.urduVerse {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 2.2rem;
+  color: #1A237E;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.translation {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: #212121;
+  margin-bottom: 2rem;
+}
+
+.cta {
+  background: #FFD700;
+  color: #1A237E;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cta:hover {
+  background: #8E24AA;
+  color: #fff;
+}

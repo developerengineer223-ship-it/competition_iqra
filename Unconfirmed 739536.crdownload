@@ -1,0 +1,23 @@
+student = {
+    "name" : "Areesha",
+    "age" : 20,
+    "gender" : "female",
+    "marks" : [30, 50, 80]
+    }
+print(student.get("age")) #using this method will take a bit long time than the other cuz its a function.
+print(student["age"])     #user prefer this method because its faster than the other one.
+print(student["marks"][2])#accessing the list of marks we use the index of the list to get the value. if we made a dictionary then we can get it directly by its key.
+
+products_details  = {
+    "product1" : {"title" : "laptop","price" : 50000, "quantity" : 10},
+    "product2" : {"title" : "mobile","price" : 30000, "quantity" : 20},
+    "product3" : {"title" : "earbuds","price" : 2000, "quantity" : 100},
+    "product4" : {"title" : "tablets","price" : 45000, "quantity" : 5},
+    "product5" : {"title" : "mouse","price" : 500, "quantity" : 500},
+}
+total = 0
+for product_number , prod_detail in products_details.items():
+    total = total + prod_detail["quantity"] #to sum up the quantities of all the products.
+    print(f" Product Number -> {product_number} -- Product Price -> {prod_detail} \n")
+    print(f" Product Number -> {product_number} -- Product Price -> {prod_detail["price"]} \n")
+print(total)    

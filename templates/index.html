@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Al-Fatiha Grammar App</title>
+</head>
+<body class="container mt-5">
+    <h2 class="text-center mb-4">Al-Fatiha Grammar Analysis</h2>
+    
+    {% for ayah_num, words in data.items() %}
+    <div class="card mb-3">
+        <div class="card-header">Ayah {{ ayah_num }}</div>
+        <div class="card-body d-flex flex-row-reverse shadow-sm">
+            {% for item in words %}
+            <div class="text-center mx-2 p-2 border rounded" style="border-top: 5px solid {{item.color}} !important;">
+                <h3 dir="rtl">{{ item.word }}</h3>
+                <small class="text-muted">{{ item.type }}</small><br>
+                <span class="badge bg-light text-dark">{{ item.role }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="mt-5 p-4 bg-light rounded">
+        <h4>Data Visualization: Parts of Speech</h4>
+        {% set total = stats['Nouns'] + stats['Particles'] + stats['Adjectives'] %}
+        {% set noun_pct = (stats['Nouns'] / total * 100) | round(0) %}
+        {% set particle_pct = (stats['Particles'] / total * 100) | round(0) %}
+        {% set adj_pct = (stats['Adjectives'] / total * 100) | round(0) %}
+        <p>Nouns: {{ noun_pct }}% | Particles: {{ particle_pct }}% | Adjectives: {{ adj_pct }}%</p>
+        <div class="progress">
+            <div class="progress-bar bg-primary" style="width: {{ noun_pct }}%"></div>
+            <div class="progress-bar bg-success" style="width: {{ particle_pct }}%"></div>
+            <div class="progress-bar bg-warning" style="width: {{ adj_pct }}%"></div>
+        </div>
+    </div>
+</body>
+</html>
